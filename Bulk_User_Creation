@@ -280,18 +280,5 @@ then
   echo " Exiting from the script "
   exit
 fi
----------------------------------------------------------------------------------------------------------------
 
-Sample file for user creation using file:
-
-adam:Adam_123:testgroup:/home/adam
-shrikant:Shri_123:root:/uhome/shrikant
-bob:Bob_1234:testgroup:/home/bob
-hemant:Hem_123:testgroup:/home/hemant
-sharat:Shar_123:testgroup:/home/sharat
-prakash:Prak_123:testgroup:/home/prakash
-scary:Scary_123:root:/uhome/scary
-omkar:Omkar_123:root:/uhome/omkar
-india:India_123:root:/uhome/india
-bhagat:Bhagat_123:root:/uhome/bhagat
-linux:Linux_123:root:/uhome/linux
+#########  End of Script  #########
