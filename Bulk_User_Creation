@@ -223,7 +223,10 @@ fi
 
 }
 
-# Main code starts here
+###############################
+###  Main code starts here  ###
+###############################
+
 clear
 echo "Please enter your name"
 read name
