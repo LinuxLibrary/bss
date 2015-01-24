@@ -1,0 +1,12 @@
+#!/bin/bash
+# Author:	Mallik
+# Date:	07-Aug-2013
+# Purpose:	Illustrate using tr in a script to convert upper to lower filenames
+
+for i in `ls -A`
+do
+newname=`echo $i | tr A-Z a-z`
+mv $i $newname
+done
+
+# End of File
