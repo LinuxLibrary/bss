@@ -7,12 +7,12 @@
 ## Variables ##
 ###############
 
-BACKUPDIR = ~/backup
-SCRIPTDIR = ~/temp2
-BACKUPFILE = scripts.backup.`date +%F`.tgz
-BACKUPHOST = <Remote Host Name/IP>
-COUNT = `ls $BACKUPDIR/scripts.* | wc -l`
-THRESHOLD = 7
+BACKUPDIR="~/backup"
+SCRIPTDIR="~/temp2"
+BACKUPFILE="scripts.backup.`date +%F`.tgz"
+BACKUPHOST=<Remote Host Name/IP>
+COUNT=`ls $BACKUPDIR/scripts.* | wc -l`
+THRESHOLD=7
 
 ###############
 ## Main Code ##
@@ -20,7 +20,7 @@ THRESHOLD = 7
 
 if [ !-e $BACKUPDIR ]
 then
-  echo Creating Backup Directory because it doesn't exists!
+  echo "Creating Backup Directory because it doesn't exists!"
   mkdir ~/$BACKUPDIR
 fi
 
@@ -29,12 +29,12 @@ then
   tar -czvf $BACKUPDIR/$BACKUPFILE $SCRIPTDIR > /dev/null
   if [ $? != 0 ]
   then
-    echo Problems creating $BACKUPFILE backupfile.
+    echo "Problems creating $BACKUPFILE backupfile."
   else
     scp $BACKUPDIR/$BACKUPFILE $BACKUPHOST:
     if [ $? != 0 ]
     then
-      echo Problems copying $BACKUPFILE to $BACKUPHOST
+      echo "Problems copying $BACKUPFILE to $BACKUPHOST"
     fi
   fi
 fi
