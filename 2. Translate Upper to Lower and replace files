@@ -1,6 +1,6 @@
 #!/bin/bash
 # Author:	Mallik
-# Date:	07-Aug-2013
+# Date:	24-Jan-2015
 # Purpose:	Illustrate using tr in a script to convert upper to lower filenames
 
 ################
