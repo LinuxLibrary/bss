@@ -7,8 +7,8 @@
 ## Variables  ##
 ################
 
-NUM = 0
-MAX = 20
+NUM=0
+MAX=20
 
 ################
 ## Main Code  ##
