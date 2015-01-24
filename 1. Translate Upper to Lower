@@ -5,8 +5,8 @@
 
 for i in `ls -A`
 do
-newname=`echo $i | tr A-Z a-z`
-mv $i $newname
+  newname=`echo $i | tr A-Z a-z`
+  mv $i $newname
 done
 
 # End of File
