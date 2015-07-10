@@ -15,10 +15,10 @@ myscriptname=`basename $0`;
 
 for i in `ls -A`
 do
-  if [ $i = $myscriptname ]
+  if [[ $i = $myscriptname ]]
     then
     echo " Sorry can't rename myself!"
-  elif [ $i != $myscriptname ]
+  elif [[ $i != $myscriptname ]]
     newname=`echo $i | tr A-Z a-z`
     mv $i $newname
   fi
