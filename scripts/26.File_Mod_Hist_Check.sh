@@ -5,7 +5,8 @@
 echo -e "Usage : $0 <filename>"
 FILE=$1
  
-USERS=`grep /bin/bash /etc/passwd | grep -v root | awk -F: '{print $1}'`
+# USERS=`grep /bin/bash /etc/passwd | grep -v root | awk -F: '{print $1}'`
+USERS=`grep /bin/bash /etc/passwd | awk -F: '{print $1}'`
 USERNAME=`echo $USERS`
  
 if [[ ! -z results.txt ]]
@@ -14,7 +15,14 @@ then
 fi
 for i in `echo $USERS`
  do
+	case $i in 
+	root)
+	HISTORY="/root/.bash_history"
+	;;
+	*)
         HISTORY="/home/$i/.bash_history"
+	;;
+	esac
 	ENCDATE=`sed -ne '/'"$FILE"'/{x;p;d;}' -e x $HISTORY | grep -v ^[a-z] | tail -n1`
         if [[ ! -z $ENCDATE ]]
         then
