@@ -1,10 +1,10 @@
-By using this script you can create users interactively by your choice, from a file and even you can do modifications 
-for a user such as change password, home directory, group and restrict login. 
-
 #!/bin/bash
 # Author: Arjun Shrinivas
 # Date: 
 # Purpose: Bulk user creation
+# By using this script you can create users interactively by your choice, from a file and even you can do modifications 
+# for a user such as change password, home directory, group and restrict login. 
+
 
 ########################################
 ######    Variable declaration    ######
