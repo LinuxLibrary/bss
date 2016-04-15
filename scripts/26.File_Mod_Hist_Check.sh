@@ -2,7 +2,7 @@
 # Author : Arjun Shrinivas
 # Purpose : To know the modification history of a specific file
 
-echo -e "Usage : `basename $0` <filename>"
+echo -e "Usage : /bin/bash `basename $0` <filename>"
 FILE=$1
  
 # USERS=`grep /bin/bash /etc/passwd | grep -v root | awk -F: '{print $1}'`
