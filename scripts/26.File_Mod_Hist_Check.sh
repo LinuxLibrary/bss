@@ -7,7 +7,7 @@ FILE=$1
  
 # USERS=`grep /bin/bash /etc/passwd | grep -v root | awk -F: '{print $1}'`
 USERS=`grep /bin/bash /etc/passwd | awk -F: '{print $1}'`
-USERNAME=`echo $USERS`
+#USERNAME=`echo $USERS`
  
 if [[ ! -z results.txt ]]
 then
