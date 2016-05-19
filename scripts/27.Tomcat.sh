@@ -26,6 +26,7 @@ restart)
 		echo "Stopping tomcat"
 		$CATALINA_HOME/bin/shutdown.sh
 		sleep 20
+		PID=`ps -ef | grep catalina | grep -v grep | awk '{print $2}'`
 		if [ -z $PID ]
 		then
 			echo "Starting tomcat"
