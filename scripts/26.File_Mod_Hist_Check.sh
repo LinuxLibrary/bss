@@ -28,9 +28,9 @@ for i in `echo $USERS`
 		COMMAND=`sed -ne '/'"$ENCDATE"'/,+1p' $HISTORY | tail -n1`
 		MODDATE=`echo $ENCDATE | tr '#' '@'`
 		DATE=`date -d $MODDATE +'%F %T'`
-#                echo -e "$i\t$DATE\t$COMMAND" >> results.txt
-                 echo -e "$i\t$DATE\t$COMMAND" |sort -k2
+                echo -e "$i\t$DATE\t$COMMAND" >> results.txt
+#                echo -e "$i\t$DATE\t$COMMAND" |sort -k2
         fi
  done
 
-# more results.txt | sort -k2
+ more results.txt | sort -k2
