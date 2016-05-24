@@ -29,7 +29,8 @@ for i in `echo $USERS`
 		MODDATE=`echo $ENCDATE | tr '#' '@'`
 		DATE=`date -d $MODDATE +'%F %T'`
                 echo -e "$i\t$DATE\t$COMMAND" >> results.txt
+#                echo -e "$i\t$DATE\t$COMMAND" |sort -k2
         fi
  done
 
-more results.txt | sort -k2
+ more results.txt | sort -k2
