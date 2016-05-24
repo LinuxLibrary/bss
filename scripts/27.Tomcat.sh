@@ -5,8 +5,6 @@
 CATALINA_HOME=/u01/tomcat
 OPTION=$1
 
-echo "Usage: `basename $0` start|stop|restart|status"
-
 case $OPTION in
 start)
 	echo "Starting tomcat"
@@ -17,8 +15,8 @@ stop)
 	$CATALINA_HOME/bin/shutdown.sh
 ;;
 restart)
-	PID=`ps -ef | grep catalina | grep -v grep | awk '{print $2}'`
-	if [ -z $PID ]
+	PID=`ps -ef | grep catalina | grep -vi 'grep\|out$' | awk '{print $2}'`
+	if [[ -z $PID ]]
 	then
 		echo "Starting tomcat"
 		$CATALINA_HOME/bin/startup.sh
@@ -26,8 +24,8 @@ restart)
 		echo "Stopping tomcat"
 		$CATALINA_HOME/bin/shutdown.sh
 		sleep 20
-		PID=`ps -ef | grep catalina | grep -v grep | awk '{print $2}'`
-		if [ -z $PID ]
+		PID=`ps -ef | grep catalina | grep -vi 'grep\|out$' | awk '{print $2}'`
+		if [[ -z $PID ]]
 		then
 			echo "Starting tomcat"
 			$CATALINA_HOME/bin/startup.sh
@@ -40,8 +38,8 @@ restart)
 	fi
 ;;
 status)
-	PID=`ps -ef | grep catalina | grep -v grep | awk '{print $2}'`
-	if [ ! -z $PID ]
+	PID=`ps -ef | grep catalina | grep -vi 'grep\|out$' | awk '{print $2}'`
+	if [[ ! -z $PID ]]
 	then
 		echo -e "Tomcat is running on pid : $PID"
 	else
@@ -50,6 +48,7 @@ status)
 ;;
 *)
 	echo "Invalid operation"
+	echo "Usage: `basename $0` start|stop|restart|status"
 ;;
 esac
 
