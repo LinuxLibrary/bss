@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Purpose : To shift through the arguments
+# Purpose : To shift through and print the arguments
 
-echo $USER
+echo -e "Current user :\t$USER"
 COUNT=0
 NUMBER=$#
 

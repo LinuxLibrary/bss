@@ -11,4 +11,16 @@
 * Arrays
 * Arthematic Operations
 * Decision Making / Conditional Statements
-* Loops & Control
+* Positional Parameters
+* Loops
+* Loops Control
+* Select Menus
+* Functions
+* Its time to Automate
+	- Network Check
+	- Monitor Service
+	- Parse Logs
+	- Backup Files
+	- Bulk User Creation
+	- Audit User Activity (Check command usage of file modification history)
+	- Manage Tomcat
