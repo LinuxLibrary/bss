@@ -15,8 +15,8 @@ do
 	cd $REPODIR/$i
 	GITURL=`git remote -v | grep fetch | awk '{print $2}'`
 	echo "Pulling all the changes from $GITURL <--- ..."
-	git pull -ff > /dev/null
+	git pull -ff origin master > /dev/null
 	echo "Pushing all local commits to $GITURL ---> ..."
-	git push -u origin master > /dev/null
+	git push -fu origin master > /dev/null
 	echo
 done
