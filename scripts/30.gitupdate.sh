@@ -15,7 +15,7 @@ do
 	echo "Changing to $REPODIR/$i"
 	cd $REPODIR/$i
 	GITURL=`git remote -v | grep fetch | awk '{print $2}'`
-	ACCOUNT=`echo $GITURL | awk -F.com/ '{print $2}' | awk -F.git '{print $1}'`
+	ACCOUNT=`echo $GITURL | awk -F.com/ '{print $2}' | awk -F.git$ '{print $1}'`
 	echo "Updating $ACCOUNT ..."
 	echo "Pulling all the changes from $GITURL <--- ..."
 	git pull -ff origin master > /dev/null
