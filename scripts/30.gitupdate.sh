@@ -16,7 +16,13 @@ do
 	GITURL=`git remote -v | grep fetch | awk '{print $2}'`
 	echo "Pulling all the changes from $GITURL <--- ..."
 	git pull -ff origin master > /dev/null
-	echo "Pushing all local commits to $GITURL ---> ..."
-	git push -fu origin master > /dev/null
+	PUSHCHK=`git lg | head -n1 | grep -v origin`
+	if [[ ! -z $PUSHCHK ]]
+	then
+		echo "Pushing all local commits to $GITURL ---> ..."
+		git push -fu origin master > /dev/null
+	else
+		echo "ORIGIN is up-to date. No commits found to push!"
+	fi
 	echo
 done
