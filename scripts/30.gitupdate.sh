@@ -3,7 +3,12 @@
 echo "Please input your Repos parent directory"
 read REPODIR
 echo
-#REPODIR="/e/Practice/GitRepos"
+
+if [[ -z $REPODIR ]]
+then
+	REPODIR="/e/Practice/GitRepos"
+fi
+
 for i in `echo $(ls $REPODIR | tr -d '/')`
 do
 	echo "Changing to $REPODIR/$i"
