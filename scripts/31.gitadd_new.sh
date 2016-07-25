@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# GIT Alias to status
+git config --global alias.s "status -s"
+
 A=`git s | grep '^A\|^AM\|^AR\|^AD^ A' | awk '{print $2}'`
 U=`git s | grep ^? | awk '{print $2}'`
 M=`git s | grep '^M\|^MA\|^MR\|^MM\|^MD\|^ M' | awk '{print $2}'`
@@ -41,7 +44,7 @@ function rename {
 }
 
 function delete {
-	for i in $D
+	for i in `echo $D`
 	do
 		echo "Removing $i ..."
 #		git add $i
@@ -75,4 +78,3 @@ else
 fi
 
 # END
-# Testing addition
