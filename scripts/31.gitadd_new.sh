@@ -7,7 +7,7 @@ R=`git s | grep '^R\|^RA\|^RM\|^RR\|^RD\|^ R' | awk '{print $4}'`
 D=`git s | grep '^D\|^ D' | awk '{print $2}'`
 
 function add {
-	for i in $A
+	for i in `echo $A`
 	do
 		echo "Adding $i to staging..."
 		git add $i
@@ -15,7 +15,7 @@ function add {
 }
 
 function stgnew {
-	for i in $U
+	for i in `echo $U`
 	do
 		echo "Adding $i to staging..."
 		git add $i
@@ -23,7 +23,7 @@ function stgnew {
 }
 
 function modify {
-	for i in $M
+	for i in `echo $M`
 	do
 		echo "Modifying $i and staging..."
 		git add $i
@@ -31,9 +31,9 @@ function modify {
 }
 
 function rename {
-	R1=`git s | grep ^R | awk '{print $2}'`
-	R2=`git s | grep ^R | awk '{print $4}'`
-	for i in $R
+	R1=`echo $R | awk '{print $2}'`
+	R2=`echo $R | awk '{print $4}'`
+	for i in `echo $R`
 	do
 		echo "Renaming/Moving $R1 to $R2 and staging..."
 		git add $R2
@@ -44,7 +44,7 @@ function delete {
 	for i in $D
 	do
 		echo "Removing $i ..."
-		git add $i
+#		git add $i
 	done
 }
 
@@ -52,7 +52,7 @@ if [[ -z $(git s) ]]
 then
 	echo "There are neither additions nor deletions to stage"
 else
-	for i in A M D R U
+	for i in A U M R D
 	do
 		case $i in
 		A)
@@ -75,3 +75,4 @@ else
 fi
 
 # END
+# Testing addition
