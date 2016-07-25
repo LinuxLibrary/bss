@@ -34,10 +34,10 @@ function modify {
 }
 
 function rename {
-	R1=`echo $R | awk '{print $2}'`
-	R2=`echo $R | awk '{print $4}'`
 	for i in `echo $R`
 	do
+		R1=`git s | grep $i | awk '{print $2}'`
+		R2=`git s | grep $i | awk '{print $4}'`
 		echo "Renaming/Moving $R1 to $R2 and staging..."
 		git add $R2
 	done
