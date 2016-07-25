@@ -1,10 +1,53 @@
 #!/bin/bash
 
+A=`git s | grep '^A\|^ A' | awk '{print $2}'`
 U=`git s | grep ^? | awk '{print $2}'`
-A=`git s | grep ^A | awk '{print $2}'`
-M=`git s | grep ^M | awk '{print $2}'`
-D=`git s | grep ^D | awk '{print $2}'`
-R=`git s | grep ^R | awk '{print $4}'`
+M=`git s | grep '^M\|^AM\|^RM\|^MM\|^ M' | awk '{print $2}'`
+R=`git s | grep '^R\|^RD\|^ R' | awk '{print $4}'`
+D=`git s | grep '^D\|^ D' | awk '{print $2}'`
+
+function add {
+	for i in $A
+	do
+		echo "Adding $i to staging..."
+		git add $i
+	done
+}
+
+function stgnew {
+	for i in $U
+	do
+		echo "Adding $i to staging..."
+		git add $i
+	done
+}
+
+function modify {
+	for i in $M
+	do
+		echo "Modifying $i and staging..."
+		git add $i
+	done
+}
+
+function rename {
+	R1=`git s | grep ^R | awk '{print $2}'`
+	R2=`git s | grep ^R | awk '{print $4}'`
+	for i in $R
+	do
+		echo "Renaming/Moving $R1 to $R2 and staging..."
+		git add $R2
+	done
+}
+
+function delete {
+	for i in $D
+	do
+		echo "Removing $i ..."
+		git add $i
+	done
+}
+
 for i in A M D R U
 do
 	if [[ -z $(git s) ]]
@@ -13,30 +56,22 @@ do
 	else
 		case $i in
 		A)
-			echo "Adding $A to staging..."
-			git add 
+			add
+		;;
+		U)
+			stgnew
+		;;
 		M)
-		elif [[ $i == $U ]]
-		then
-			echo "Adding $i to staging..."
-			git add $i
-		elif [[ $i == $M ]]
-		then
-			echo "Modifying $i and adding to staging..."
-			git add $i
-		elif [[ $i == $D ]]
-		then
-			echo "Deleting $i from repository..."
-			git add $i
-		elif [[ $i == $R ]]
-		then
-			R1=`git s | grep $i | awk '{print $2}'`
-			R2=`git s | grep $i | awk '{print $4}'`
-			echo "Renaming $R1 to $R2 ..."
-			git add $R2
-#		else
-#			echo "Exiting..."
-#			exit 0
-		fi
+			modify
+		;;
+		R)
+			rename
+		;;
+		D)
+			delete
+		;;
+		esac
 	fi
 done
+
+# Testing addition
