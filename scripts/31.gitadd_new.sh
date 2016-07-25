@@ -48,12 +48,12 @@ function delete {
 	done
 }
 
-for i in A M D R U
-do
-	if [[ -z $(git s) ]]
-	then
-		echo "There are neither additions nor deletions to stage"
-	else
+if [[ -z $(git s) ]]
+then
+	echo "There are neither additions nor deletions to stage"
+else
+	for i in A M D R U
+	do
 		case $i in
 		A)
 			add
@@ -71,8 +71,8 @@ do
 			delete
 		;;
 		esac
-	fi
-done
+	done
+fi
 
 # END
 # Testing addition
