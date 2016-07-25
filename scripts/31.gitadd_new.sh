@@ -1,9 +1,9 @@
 #!/bin/bash
 
-A=`git s | grep '^A\|^ A' | awk '{print $2}'`
+A=`git s | grep '^A\|^AM\|^AR\|^AD^ A' | awk '{print $2}'`
 U=`git s | grep ^? | awk '{print $2}'`
-M=`git s | grep '^M\|^AM\|^RM\|^MM\|^ M' | awk '{print $2}'`
-R=`git s | grep '^R\|^RD\|^ R' | awk '{print $4}'`
+M=`git s | grep '^M\|^MA\|^MR\|^MM\|^MD\|^ M' | awk '{print $2}'`
+R=`git s | grep '^R\|^RA\|^RM\|^RR\|^RD\|^ R' | awk '{print $4}'`
 D=`git s | grep '^D\|^ D' | awk '{print $2}'`
 
 function add {
@@ -74,4 +74,5 @@ do
 	fi
 done
 
+# END
 # Testing addition
