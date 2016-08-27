@@ -2,14 +2,11 @@
 
 clear
 read -p "Input your GitHub login name: " USER
-# USER='vmsnivas'
 
 read -s -p "GitHub login password: " PASSWORD
-# PASSWORD='Admin_119'
 
 echo
 read -p "Input your GitHub org name: " ORG
-# ORG='LinuxLibrary'
 
 echo
 read -p "Input your fullname: " FULLNAME
