@@ -38,17 +38,17 @@ function userrepos {
 	then
 		curl -s -u $USER:$PASSWORD https://api.github.com/users/$USER/repos > res.out
 		URLS=`more res.out | jq '.[] .clone_url'`
-		CLONE_URLS=`echo $URLS | sed -ne 's/https:\/\//git+ssh:\/\/git@/p' | tr -d '"'`
-		for REPO in `echo $CLONE_URLS`
+		for URL in `echo $URLS`
 		do
-			REPONAME=`echo $REPO | awk -F$USER/ '{print $2}' | sed -ne 's/.git//p'`
+			CLONE_URL=`echo $URL | sed -ne 's/https:\/\//git+ssh:\/\/git@/p' | tr -d '"'`
+			REPONAME=`echo $CLONE_URL | awk -F$USER/ '{print $2}' | sed -ne 's/.git//p'`
 			if [[ ! -d $USERREPOS/$REPONAME ]]
 			then
 				mkdir -p $USERREPOS/$REPONAME
 				cd $USERREPOS/$REPONAME
 				git init >> usercloneres.out 2>&1
-				git remote add -f origin $REPO >> usercloneres.out 2>&1
-				git remote set-url origin $REPO >> usercloneres.out 2>&1
+				git remote add -f origin $CLONE_URL >> usercloneres.out 2>&1
+				git remote set-url origin $CLONE_URL >> usercloneres.out 2>&1
 				git pull -ff origin master >> usercloneres.out 2>&1
 				UREPOCOUNT=`expr $UREPOCOUNT + 1`
 				echo -e "Cloned $USER/$REPONAME successfully!"
@@ -65,17 +65,17 @@ function orgrepos {
 	then
 		curl -s -u $USER:$PASSWORD https://api.github.com/orgs/$ORG/repos > res.out
 		URLS=`more res.out | jq '.[] .clone_url'`
-		CLONE_URLS=`echo $URLS | sed -ne 's/https:\/\//git+ssh:\/\/git@/p' | tr -d '"'`
-		for REPO in `echo $CLONE_URLS`
+		for URL in `echo $URLS`
 		do
-			REPONAME=`echo $REPO | awk -F$ORG/ '{print $2}' | sed -ne 's/.git//p'`
+			CLONE_URL=`echo $URL | sed -ne 's/https:\/\//git+ssh:\/\/git@/p' | tr -d '"'`
+			REPONAME=`echo $CLONE_URL | awk -F$ORG/ '{print $2}' | sed -ne 's/.git//p'`
 			if [[ ! -d $ORGREPOS/$REPONAME ]]
 			then
 				mkdir -p $ORGREPOS/$REPONAME
 				cd $ORGREPOS/$REPONAME
 				git init >> orgcloneres.out 2>&1
-				git remote add -f origin $REPO >> orgcloneres.out 2>&1
-				git remote set-url origin $REPO >> orgcloneres.out 2>&1
+				git remote add -f origin $CLONE_URL >> orgcloneres.out 2>&1
+				git remote set-url origin $CLONE_URL >> orgcloneres.out 2>&1
 				git pull -ff origin master >> orgcloneres.out 2>&1
 				echo -e "Cloned $ORG/$REPONAME successfully!"
 				OREPOCOUNT=`expr $OREPOCOUNT + 1`
