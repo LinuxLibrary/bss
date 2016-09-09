@@ -26,7 +26,7 @@ function userbychoice() {
       useradd $NUSER
       echo "User $NUSER created successfully"
       echo "Please enter a password for $NUSER"
-      read PASSWD
+      read -s PASSWD
       echo $PASSWD | passwd --stdin $NUSER > /dev/null
       echo "$NUSER password has been changed successfully"
       let "COUNT += 1"
@@ -124,7 +124,7 @@ then
     read PWORD
     echo $PWORD | passwd --stdin $UNAME > /dev/null
     echo
-#    ummenu;
+    ummenu;
   else
     echo "No such user"
     exit
@@ -164,6 +164,7 @@ then
         echo "Thank you"
       fi
     fi
+    ummenu;
   else
     echo "No such user"
   fi
@@ -193,6 +194,7 @@ then
       echo "Problem changing $UNAME's home directory"
       exit
     fi
+    ummenu;
   else
     echo "No such user"
     exit
@@ -216,6 +218,7 @@ then
     echo "No such user"
     exit
   fi
+  ummenu;
 else [ $i = E ]
   echo "You have chosen to quit User Modification"
   exit
