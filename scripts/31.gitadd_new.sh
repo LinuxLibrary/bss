@@ -14,6 +14,7 @@ function add {
 	do
 		echo "Adding $i to staging..."
 		git add $i
+		git commit -m `echo "Added $i"`
 	done
 }
 
@@ -22,6 +23,7 @@ function stgnew {
 	do
 		echo "Adding $i to staging..."
 		git add $i
+		git commit -m `echo "Added $i"`
 	done
 }
 
@@ -30,6 +32,7 @@ function modify {
 	do
 		echo "Modifying $i and staging..."
 		git add $i
+		git commit -m `echo "Added $i"`
 	done
 }
 
@@ -40,6 +43,7 @@ function rename {
 		R2=`git s | grep $i | awk '{print $4}'`
 		echo "Renaming/Moving $R1 to $R2 and staging..."
 		git add $R2
+		git commit -m `echo "Renamed/Moved $R1 to $R2"`
 	done
 }
 
@@ -48,6 +52,7 @@ function delete {
 	do
 		echo "Removing $i ..."
 #		git add $i
+		git commit -m `echo "Removed $i"`
 	done
 }
 
