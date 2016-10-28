@@ -13,7 +13,6 @@ function add {
 	for i in `echo $A`
 	do
 		FILE=$i
-#		MSG="Added $i"
 		git add $i
 		git commit -m "Added $FILE"
 	done
@@ -32,9 +31,8 @@ function modify {
 	for i in `echo $M`
 	do
 		FILE=$i
-#		MSG="Modified $i"
 		git add $i
-		git commit -m "Modified $FILE"
+		git commit -m "Modified $i"
 	done
 }
 
