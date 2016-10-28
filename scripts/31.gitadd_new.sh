@@ -12,9 +12,10 @@ D=`git s | grep '^D\|^ D' | awk '{print $2}'`
 function add {
 	for i in `echo $A`
 	do
-		MSG="Added $i"
+		FILE=$i
+#		MSG="Added $i"
 		git add $i
-		git commit -m $MSG
+		git commit -m "Added $FILE"
 	done
 }
 
@@ -30,9 +31,10 @@ function stgnew {
 function modify {
 	for i in `echo $M`
 	do
-		MSG="Modified $i"
+		FILE=$i
+#		MSG="Modified $i"
 		git add $i
-		git commit -m $MSG
+		git commit -m "Modified $FILE"
 	done
 }
 
