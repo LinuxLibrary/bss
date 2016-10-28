@@ -12,7 +12,7 @@ D=`git s | grep '^D\|^ D' | awk '{print $2}'`
 function add {
 	for i in `echo $A`
 	do
-		MSG=$(echo "Added $i")
+		MSG="Added $i"
 		git add $i
 		git commit -m $MSG
 	done
@@ -21,7 +21,7 @@ function add {
 function stgnew {
 	for i in `echo $U`
 	do
-		MSG=$(echo "Added $i")
+		MSG="Added $i"
 		git add $i
 		git commit -m $MSG
 	done
@@ -30,7 +30,7 @@ function stgnew {
 function modify {
 	for i in `echo $M`
 	do
-		MSG=$(echo "Modified $i")
+		MSG="Modified $i"
 		git add $i
 		git commit -m $MSG
 	done
@@ -41,7 +41,7 @@ function rename {
 	do
 		R1=`git s | grep $i | awk '{print $2}'`
 		R2=`git s | grep $i | awk '{print $4}'`
-		MSG=$(echo "Renamed/Moved $R1 to $R2")
+		MSG="Renamed/Moved $R1 to $R2"
 		git add $R2
 		git commit -m $MSG
 	done
@@ -50,7 +50,7 @@ function rename {
 function delete {
 	for i in `echo $D`
 	do
-		MSG=$(echo "Removed $i")
+		MSG="Removed $i"
 #		git add $i
 		git commit -m $MSG
 	done
