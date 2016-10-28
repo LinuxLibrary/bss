@@ -80,6 +80,7 @@ else
 		;;
 		esac
 	done
+	git push -fu origin master
 fi
 
 # END
