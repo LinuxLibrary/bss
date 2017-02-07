@@ -2,7 +2,7 @@
 
 echo "Please input your Repos parent directory"
 read REPODIR
-echo
+echo -e "\nUpdading $REPODIR...\n"
 
 if [[ -z $REPODIR ]]
 then
@@ -51,4 +51,6 @@ then
 	echo
 	more $WARNFILE
 	rm -rf $WARNFILE
+else
+	exit 0
 fi
