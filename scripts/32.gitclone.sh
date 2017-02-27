@@ -42,7 +42,7 @@ function userrepos {
 		do
 			CLONE_URL=`echo $URL | sed -ne 's/https:\/\//git+ssh:\/\/git@/p' | tr -d '"'`
 			REPONAME=`echo $CLONE_URL | awk -F$USER/ '{print $2}' | sed -ne 's/.git//p'`
-			if [[ ! -d $USERREPOS/$REPONAME ]]
+			if [[ ! -d $USERREPOS/$REPONAME/.git ]]
 			then
 				mkdir -p $USERREPOS/$REPONAME
 				cd $USERREPOS/$REPONAME
@@ -69,7 +69,7 @@ function orgrepos {
 		do
 			CLONE_URL=`echo $URL | sed -ne 's/https:\/\//git+ssh:\/\/git@/p' | tr -d '"'`
 			REPONAME=`echo $CLONE_URL | awk -F$ORG/ '{print $2}' | sed -ne 's/.git//p'`
-			if [[ ! -d $ORGREPOS/$REPONAME ]]
+			if [[ ! -d $ORGREPOS/$REPONAME/.git ]]
 			then
 				mkdir -p $ORGREPOS/$REPONAME
 				cd $ORGREPOS/$REPONAME
