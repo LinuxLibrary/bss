@@ -17,9 +17,9 @@
 	- JavaScript -  Supports normal text and/or RegEx matches
 - Ability to describe search patterns concisely
 
-```
-Search for "linux (or) Linux": [lL]inux
-```
+	```
+	Search for "linux (or) Linux": [lL]inux
+	```
 
 - Reduces passes over text files - in particular large files
 - Uses meta-characters and regular (literal[A-Za-z,0-9,_]) characters to describe search patterns
