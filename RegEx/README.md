@@ -16,11 +16,15 @@
 	- Java - Supports normal text and/or RegEx matches
 	- JavaScript -  Supports normal text and/or RegEx matches
 - Ability to describe search patterns concisely
-
-	```
-	Search for "linux (or) Linux": [lL]inux
-	```
-
+	- Search for `linux (or) Linux`: `[lL]inux`
 - Reduces passes over text files - in particular large files
 - Uses meta-characters and regular (literal[A-Za-z,0-9,_]) characters to describe search patterns
 - First match wins unless quantifiers are used (typical RegEx algorithms)
+- Searches for characters at beginning and end of the string using:
+	- `^` - Caret - Anchor for the beginning of a string
+	- `$` - Dollar - Anchor for the end of a string
+	- `^$` - Finds empty lines
+- Ability to define character classes and sets - ranges of characters - 0-9, A-Z, a-z
+	- Search for `Linux119`: `[lL]inux[0-9][0-9][0-9]`
+- Reference predefined (shorthand) character sets - i.e. `\b`: `(word boundary)`
+- Negate character classes and sets using - `^`
