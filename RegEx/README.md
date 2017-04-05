@@ -28,3 +28,16 @@
 	- Search for `Linux119`: `[lL]inux[0-9][0-9][0-9]`
 - Reference predefined (shorthand) character sets - i.e. `\b`: `(word boundary)`
 - Negate character classes and sets using - `^`
+- Supports alternation of characters - [cat|dog] - | = OR
+- Supports alternation of words or RegEx - (cat|dog) - matches whole word
+- Supports operational meta characters - ?, *, +, . (Matches any character except new line)
+- Supports repetition via 3 quantifiers
+	- * - matches 0 or more times
+	- + - matches 1 or more times
+	- {} 
+		- {n} - Matches `n` times
+		- {min,max} - Matches at least min times and at most  max times
+
+		```
+		Linux119 - [lL]inux[0-9]{1,3}
+		```
